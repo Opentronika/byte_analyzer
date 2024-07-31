@@ -41,10 +41,10 @@
         <span class="hidden group-hover:block">The most common LCD screens only support 8 custom characters</span>
       </div>
     </div>
-    <article class="  p-2">
-      <CodeBlock lang="c" :code="msg" theme="dark" highlightjs
+    <div class="p-2">
+      <VCodeBlock lang="c" :code="msg" theme="dark" highlightjs
         class=" rounded-lg border-4 border-gray-200 dark:border-gray-700" />
-    </article>
+    </div>
 
   </div>
 </template>
@@ -59,7 +59,7 @@ import "material-dynamic-colors";
 import 'highlight.js/styles/a11y-dark.css';
 import getCodeString from '../scripts/getcodestring.js'
 import CharsTable from './charstable.vue'
-import CodeBlock from 'vue3-code-block'
+import VCodeBlock from '@wdns/vue-code-block'
 export default {
   name: 'MainApp',
   data() {
@@ -84,7 +84,7 @@ export default {
   components: {
     CharsTable,
     LcdScreen,
-    CodeBlock
+    VCodeBlock,
   },
   methods: {
     updateCode(characters) {
