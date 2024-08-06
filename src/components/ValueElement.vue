@@ -1,14 +1,14 @@
 <template>
-  <table class="table-auto border-collapse border border-gray-300 m-1">
+  <table class="table-auto border-collapse border border-gray-300 m-1 rounded">
     <thead>
       <tr>
-        <th class="border border-gray-300 p-2">{{ name }}</th>
+        <th class="border border-gray-300 p-2 bg-slate-200 dark:border-gray-700 dark:bg-slate-600 dark:text-white">{{ name }}</th>
       </tr>
     </thead>
     <tbody>
-      <tr v-for="(hexNormalizedSize, index) in editableValues" :key="index">
-        <td class="border border-gray-300 p-2">
-          <input v-model="editableValues[index].m_StringValue" @input="handleInputChange($event, index)" type="text" class="w-full p-1 border border-gray-300 rounded" />
+      <tr class="w-full p-2 border border-gray-300 rounded dark:border-gray-700  dark:text-white" v-for="(hexNormalizedSize, index) in editableValues" :key="index">
+        <td >
+          <input v-model="editableValues[index].m_StringValue" @input="handleInputChange($event, index)" type="text" class=" p-1 dark:bg-slate-900" />
         </td>
       </tr>
     </tbody>
