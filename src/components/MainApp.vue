@@ -1,26 +1,23 @@
 <template>
-  <div id="app" class="dark:bg-gray-900 bg-white">
-    <ValueElement :value="mainval"/>
+  <div id="app" class=" flex dark:bg-gray-900 bg-white p-2 justify-center">
+    <ValueElement :value="[60, 10, 5]" typevalues="hexadecimal"/>
+    <ValueElement :value="[60, 10, 5]" typevalues="hexadecimal"/>
+    <ValueElement :value="[60, 10, 5]" typevalues="hexadecimal"/>
   </div>
 </template>
 
 <script>
+import { ref,computed } from 'vue';
 import ValueElement from './ValueElement.vue';
 export default {
   name: 'MainApp',
-  data() {
-    return {
-      mainval:60
-    }
-  },
   components: {
     ValueElement
   },
-  methods: {
-
-  },
-  mounted() {
-  },
+  setup(props){
+    const mainval = ref([60,10,5])
+    return mainval
+  }
 }
 </script>
 
