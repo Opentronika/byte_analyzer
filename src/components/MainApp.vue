@@ -1,8 +1,8 @@
 <template>
   <div id="app" class=" flex dark:bg-gray-900 bg-white p-2 justify-center">
-    <ValueElement :value="mainval" :typeClass="HexadecimalType" />
-    <ValueElement :value="mainval" :typeClass="HexadecimalType" />
-    <ValueElement :value="mainval" :typeClass="HexadecimalType" />
+    <ValueElement :value="mainvals" :typeClass="HexadecimalType" @update:value="handleUpdate"/>
+    <ValueElement :value="mainvals" :typeClass="HexadecimalType" @update:value="handleUpdate"/>
+    <ValueElement :value="mainvals" :typeClass="HexadecimalType" @update:value="handleUpdate"/>
   </div>
 </template>
 
@@ -19,10 +19,13 @@ export default {
     return { HexadecimalType };
   },
   setup(props) {
-    const mainval = ref([60, 10, 5])
-    return { mainval }
+    const mainvals = ref([60, 10, 5])
+
+    const handleUpdate = (newValue) => {
+      console.log(newValue)
+      mainvals.value = newValue;
+    };
+    return { mainvals,handleUpdate }
   }
 }
 </script>
-
-<style></style>import type HelloWorldVue from './HelloWorld.vue';

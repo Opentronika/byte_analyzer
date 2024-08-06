@@ -15,11 +15,11 @@ export default class HexadecimalType{
     }
 
     toString(){
-        return `${this.m_Value.toString(16).padStart(2, '0').toUpperCase()}`;
+        return `${this.m_Value.toString(16).padStart(1, '0').toUpperCase()}`;
     }
 
     toInt(){
-
+        return parseInt(this.m_StringValue, 16);
     }
 
 }

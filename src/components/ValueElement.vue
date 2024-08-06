@@ -16,11 +16,10 @@
 </template>
 
 <script>
-import { ref, computed } from 'vue';
+import { ref, computed} from 'vue';
 
 export default {
   name: 'ValueElement',
-  emits: ["selectCharacter"],
   data() {
     return {
     }
@@ -40,7 +39,7 @@ export default {
   },
   methods: {
   },
-  setup(props) {
+  setup(props, {emit}) {
     const typevals = ref(props.typevalues)
     const name= ref(props.typeClass.cNAME)
     
@@ -49,14 +48,12 @@ export default {
         return [...props.value].map((x) => new props.typeClass(x));
       },
       set(value) {
-        console.log(value)
-        // emit('update:value', value);
+        emit('update:value', value.map((x) => x.toInt()));
       }
     });
 
     function handleInputChange(event, index) {
       event.target.value = props.typeClass.filter(event.target.value)
-      console.log(event.target.value)
       const newValue = new props.typeClass(event.target.value);
       const newValues = [...editableValues.value];
       newValues[index]=newValue
