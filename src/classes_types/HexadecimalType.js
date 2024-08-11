@@ -16,12 +16,18 @@ export default class HexadecimalType{
         return strval.replace(/[^0-9a-fA-F]/g, '');
     }
 
+    static filterRaw(strval) {
+        return strval.replace(/[^0-9a-fA-F]/g, '');
+    }
+
     toString(){
         return `${this.m_Value.toString(16).padStart(1, '0').toUpperCase()}`;
     }
 
     toRawString(){
-        return `${this.m_Value.toString(16).padStart(1, '0').toUpperCase()}`;
+        return `${this.m_Value.toString(16).padStart(2, '0').toUpperCase()}`
+    .match(/.{1,2}/g) 
+    .join(' ');
     }
 
     toInt(){
