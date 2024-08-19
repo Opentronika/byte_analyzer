@@ -1,4 +1,4 @@
-import {toNByteInteger} from './Utils'
+import { toNByteInteger, hexStringToNumber } from './Utils'
 
 
 export default class Uint32BIType {
@@ -10,10 +10,13 @@ export default class Uint32BIType {
     #m_Signed = false
     static cNAME = "Unsigned integer 32 bits big endian"
 
-    constructor(value,raw = false) {
-        value = raw?parseInt(value, 16):value;
-        this.m_Value = toNByteInteger(value,this.#m_MaxLengthBytes,this.#m_Signed);
-        console.log(this.m_Value)
+    constructor(value, raw = false) {
+        if (raw) {
+            this.m_Value = hexStringToNumber(value, 4, false, false);
+        }
+        else {
+            this.m_Value = toNByteInteger(value, this.#m_MaxLengthBytes, this.#m_Signed);
+        }
         this.m_StringValue = this.toString();
         this.m_StringRaw = this.toRawString();
     }
@@ -27,13 +30,13 @@ export default class Uint32BIType {
     }
 
     toString() {
-        return `${this.m_Value.toString().padStart(1, '0').toUpperCase()}`;
+        return `${this.m_Value.toString().toUpperCase()}`;
     }
 
     toRawString() {
-        return `${this.m_Value.toString(16).padStart(2, '0').toUpperCase()}`
-        .match(/.{1,2}/g) 
-        .join(' ');
+        return `${this.m_Value.toString(16).toUpperCase()}`
+            .match(/.{1,2}/g)
+            .join(' ');
     }
 
     toInt() {
