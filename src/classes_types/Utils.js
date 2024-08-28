@@ -1,5 +1,8 @@
 function toNByteInteger(num, nBytes, signed = false) {
     // Convertir el número a BigInt
+    if(num=='-'){
+        return 0n;
+    }
     let bigIntNum = BigInt(num);
 
     // Calcular el número máximo de bits para los n bytes (8 bits por byte)
@@ -38,6 +41,7 @@ function hexStringToNumber(hexString, byteLength, signed = true, littleEndian = 
         byteArray.push(parseInt(cleanedHexString.substr(i, 2), 16));
     }
 
+    console.log(byteArray)
     // Si es little endian y el sistema debe interpretarse como big endian, invertir el array
     if (littleEndian) {
         byteArray.reverse();
@@ -59,5 +63,26 @@ function hexStringToNumber(hexString, byteLength, signed = true, littleEndian = 
     return number;
 }
 
+function numberToHexString(bigint, byteLength, littleEndian = true) {
+    // Limitar el BigInt al número de bytes especificado
+    const mask = (BigInt(1) << BigInt(byteLength * 8)) - BigInt(1);
+    let limitedBigInt = bigint & mask;
 
-export {toNByteInteger, hexStringToNumber}
+    // Convertir el BigInt a un array de bytes
+    let byteArray = [];
+    for (let i = 0; i < byteLength; i++) {
+        byteArray.push(Number(limitedBigInt & BigInt(0xFF)));
+        limitedBigInt >>= BigInt(8);
+    }
+
+    // Si se requiere big endian, invertir el array
+    if (!littleEndian) {
+        byteArray.reverse();
+    }
+
+    // Convertir cada byte a un string hexadecimal de dos dígitos
+    return byteArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
+}
+
+
+export {toNByteInteger, hexStringToNumber,numberToHexString}

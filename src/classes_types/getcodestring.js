@@ -23,12 +23,10 @@ function getCodeString(characters){
         for(let LCDrow=0; LCDrow<characters[LCDcolum].length;LCDrow++){
             if(!isCharValid(characters[LCDcolum][LCDrow])) continue
             Charsvalids[characters[LCDcolum][LCDrow].toString()]=characters[LCDcolum][LCDrow];
-            //console.log(Charsvalids);
         }
     }
 
     for (let i in Charsvalids){
-        //console.log(Charsvalids[i])
         linetext=linetext.concat('byte customChar',Charcount,'[] = {\n')
         Charcount++;
         Charsvalids[i].forEach(line=>{

@@ -70,6 +70,7 @@ export default {
 
     function handleInputRawChange(event, index) {
       event.target.value = props.typeClass.filterRaw(event.target.value)
+      console.log(event.target.value)
       const newValue = new props.typeClass(event.target.value,true);
       const newValues = [...editableValues.value];
       newValues[index]=newValue
