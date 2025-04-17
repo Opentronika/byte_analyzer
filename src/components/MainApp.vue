@@ -19,10 +19,11 @@ export default {
     ValueElement
   },
   data() {
+    // return { HexadecimalType, Uint32BIType, Int32BIType, BinaryType};
     return { HexadecimalType, Uint32BIType, Int32BIType, BinaryType};
   },
   setup(props) {
-    const mainvals = ref([60, 10, 5])
+    const mainvals = ref([60n, 10n, 5n]);
 
     const handleUpdate = (newValue) => {
       mainvals.value = newValue;

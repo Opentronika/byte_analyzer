@@ -29,6 +29,11 @@ export default class Uint32BIType {
         return strval.replace(/[^0-9a-fA-F]/g, '');
     }
 
+    static fromString(hexString) {
+        const filteredString = this.filter(hexString); // Filtra caracteres no válidos
+        return new Uint32BIType(filteredString); // Crea una nueva instancia
+    }
+
     toString() {
         return `${this.m_Value.toString().toUpperCase()}`;
     }
