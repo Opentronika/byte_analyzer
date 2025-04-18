@@ -29,7 +29,7 @@ export default {
       type: Array,
       required: true,
       validator: function (value) {
-        return value.every(item => typeof item === 'number');
+        return value.every(item => typeof item === 'bigint');
       }
     },
     typeClass: {

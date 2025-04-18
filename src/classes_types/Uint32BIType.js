@@ -45,7 +45,7 @@ export default class Uint32BIType {
     }
 
     toInt() {
-        return parseInt(this.m_StringValue);
+        return this.m_Value;
     }
 
 }

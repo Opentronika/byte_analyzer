@@ -22,11 +22,11 @@ export default class Uint32BIType {
     }
 
     static filter(strval) {
-        let strtemp=strval.replace(/[^0-9-]/g, '')
-        let minus= strval.search('-')
-        if(minus!=-1){
-            strtemp=strtemp.replace(/[^0-9]/g, '')
-            strtemp='-'+strtemp;
+        let strtemp = strval.replace(/[^0-9-]/g, '')
+        let minus = strval.search('-')
+        if (minus != -1) {
+            strtemp = strtemp.replace(/[^0-9]/g, '')
+            strtemp = '-' + strtemp;
         }
         return strtemp;
     }
@@ -45,13 +45,13 @@ export default class Uint32BIType {
     }
 
     toRawString() {
-        return numberToHexString(this.m_Value,this.#m_MaxLengthBytes,false).toUpperCase()
-        .match(/.{1,2}/g)
-        .join(' ');
+        return numberToHexString(this.m_Value, this.#m_MaxLengthBytes, false).toUpperCase()
+            .match(/.{1,2}/g)
+            .join(' ');
     }
 
     toInt() {
-        return parseInt(this.m_StringValue);
+        return this.m_Value;
     }
 
 }
