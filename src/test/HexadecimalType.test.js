@@ -11,3 +11,10 @@ test('to string signed', () => {
     console.log(valueclass.m_StringValue)
     expect(valueclass.m_StringValue).toBe("FF FF FF FF")
   })
+
+  test('to raw string 16 bit', () => {
+    const valueclass = new HexadecimalType(-1n)
+    console.log(valueclass.toRawString(16))
+    expect(valueclass.toRawString(16)).toBe("FF FF")
+    // expect(valueclass.m_StringValue).toBe("FF FF FF FF")
+  })
