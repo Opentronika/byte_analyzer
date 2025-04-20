@@ -29,8 +29,12 @@ export default {
       type: Array,
       required: true,
       validator: function (value) {
-        return value.every(item => typeof item === 'bigint');
-      }
+      return value.every(item => 
+        typeof item.value === 'bigint' && // Verifica que `value` sea un BigInt
+        typeof item.byteLength === 'number' && // Verifica que `byteLength` sea un número
+        item.byteLength > 0 // Asegura que `byteLength` sea mayor que 0
+      );
+    }
     },
     typeClass: {
       type: Function,  
@@ -45,20 +49,20 @@ export default {
     
     const editableValues = computed({
       get() {
-        return [...props.value].map((x) => new props.typeClass(x));
+        return [...props.value].map((x) => new props.typeClass(x.value, x.byteLength));
       },
       set(value) {
-        emit('update:value', value.map((x) => x.toInt()));
+        // emit('update:value', value.map((x) => x.toInt()));
       }
     });
 
     function handleInputChange(event, index) {
       event.target.value = props.typeClass.filter(event.target.value)
       const newValue = props.typeClass.fromString(event.target.value);
-      const newValues = [...editableValues.value];
-      newValues[index]=newValue
-      // Actualiza el valor computado
-      editableValues.value = newValues;
+      emit('update:value', {
+      updatedIndex: index,
+      updatedValue: newValue
+    });
     }
 
     return {

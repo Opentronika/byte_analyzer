@@ -23,10 +23,14 @@ export default {
     return { HexadecimalType, Uint32BIType, Int32BIType, BinaryType};
   },
   setup(props) {
-    const mainvals = ref([60n, 10n, 5n]);
+    const mainvals = ref([{ value: 60n, byteLength: 4 },
+    { value: 10n, byteLength: 4 },
+    { value: 5n, byteLength: 1 }]);
 
     const handleUpdate = (newValue) => {
-      mainvals.value = newValue;
+      console.log("handleUpdate", newValue);
+      mainvals.value[newValue.updatedIndex] = { value: newValue.updatedValue.toInt(), byteLength: newValue.updatedValue.constructor.cMaxLengthBytes };
+      console.log("mainvals", mainvals.value);
     };
     return { mainvals,handleUpdate }
   }

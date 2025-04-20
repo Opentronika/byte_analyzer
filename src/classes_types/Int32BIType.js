@@ -8,7 +8,7 @@ export default class Uint32BIType {
     m_StringRaw;
     #m_Signed = true
     static cNAME = "Signed integer 32 bits big endian"
-    static cMaxLengthBytes = 2;
+    static cMaxLengthBytes = 4;
 
     constructor(value, bytelength = 2) {
         

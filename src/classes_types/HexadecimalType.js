@@ -4,17 +4,16 @@ export default class HexadecimalType {
     m_StringValue;
     m_StringRaw;
     static cNAME = "Raw value Hex"
-    static cMaxLengthBytes = 8;
+    static cMaxLengthBytes = 4;
 
-    constructor(value, bitLength = 32) {
+    constructor(value, bytLength = 4) {
         this.m_Value = BigInt(value);
-        console.log(this.m_Value);
-        this.m_StringValue = this.toRawString(bitLength);
+        console.log(this.m_Value,bytLength);
+        this.m_StringValue = this.toRawString(bytLength*8);
         // this.m_StringRaw=this.toRawString();
     }
 
     static fromString(hexString, bitLength = 32) {
-        console.log(bitLength);
         const filteredString = this.filter(hexString); // Filtra caracteres no válidos
         const value = BigInt(`0x${filteredString}`); // Convierte a BigInt
         return new HexadecimalType(value, bitLength); // Crea una nueva instancia
@@ -39,7 +38,6 @@ export default class HexadecimalType {
     // }
 
     toRawString(bitLength = 32) {
-        console.log(bitLength);
         const maxValue = BigInt(2 ** bitLength); // Valor máximo para el tamaño de bits
         const signedValue = this.m_Value < 0n ? maxValue + this.m_Value : this.m_Value; // Ajusta el valor para incluir el bit de signo
 
