@@ -31,12 +31,6 @@ export default class HexadecimalType {
         return `${this.m_Value.toString(16).padStart(1, '0').toUpperCase()}`;
     }
 
-    // toRawString() {
-    //     const hexString = this.m_Value.toString(16).toUpperCase(); // Convierte BigInt a hexadecimal
-    //     const paddedHex = hexString.length % 2 === 0 ? hexString : `0${hexString}`; // Asegura longitud par
-    //     return paddedHex.match(/.{1,2}/g).join(' '); // Divide en pares y los une con espacios
-    // }
-
     toRawString(bitLength = 32) {
         const maxValue = BigInt(2 ** bitLength); // Valor máximo para el tamaño de bits
         const signedValue = this.m_Value < 0n ? maxValue + this.m_Value : this.m_Value; // Ajusta el valor para incluir el bit de signo
