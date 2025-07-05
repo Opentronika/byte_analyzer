@@ -1,6 +1,10 @@
 <template>
-  <div id="app" class=" flex dark:bg-gray-900 bg-white p-2 justify-center">
-    <ValueElement :value="mainvals" :typeClass="HexadecimalType" @update:value="handleUpdate"/>
+  <div class="w-full max-w-[1500px] p-2 mx-auto">
+  <ValueElement :value="mainvals" :typeClass="BinaryType" @update:value="handleUpdate"/>
+</div>
+
+  <div id="app" class=" flex dark:bg-gray-900 bg-white p-2 justify-center flex-wrap [&>*]:max-w-[500px]">
+    <ValueElement :value="mainvals" :typeClass="HexadecimalType" @update:value="handleUpdate" />
     <ValueElement :value="mainvals" :typeClass="Uint32BIType" @update:value="handleUpdate"/>
     <ValueElement :value="mainvals" :typeClass="Int32BIType" @update:value="handleUpdate"/>
   </div>
