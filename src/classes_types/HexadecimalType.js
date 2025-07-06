@@ -4,12 +4,12 @@ export default class HexadecimalType {
     m_StringValue;
     m_StringRaw;
     static cNAME = "Raw value Hex"
-    static cMaxLengthBytes = 4;
+    static cMaxLengthBytes = 8;
 
     constructor(value, bytLength = 4) {
         this.m_Value = BigInt(value);
-        console.log(this.m_Value,bytLength);
-        this.m_StringValue = this.toRawString(bytLength*8);
+        console.log(this.m_Value, bytLength);
+        this.m_StringValue = this.toRawString(bytLength * 8);
         // this.m_StringRaw=this.toRawString();
     }
 
