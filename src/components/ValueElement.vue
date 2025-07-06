@@ -1,20 +1,20 @@
 <template>
-  <table class="table-auto border-collapse border border-gray-300 m-1 rounded w-full ">
-    <thead class="border-gray-300 p-2 bg-slate-200 dark:border-gray-700 dark:bg-slate-600 dark:text-white">
+  <table class="table-auto border-collapse border border-gray-300 m-1 rounded w-full dark:border-gray-400">
+    <thead class="border-gray-300 p-2 bg-slate-200 dark:bg-slate-600 dark:text-white">
       <tr>
         <th class="px-2">{{ name }}</th>
       </tr>
     </thead>
     <tbody>
-      <tr class="p-2 border border-gray-300 rounded dark:border-gray-700  dark:text-white"
+      <tr class="p-2 border border-gray-300 rounded dark:text-white"
         v-for="(hexNormalizedSize, index) in editableValues" :key="index">
-        <td class="border">
+        <td class="border dark:border-gray-400">
           <input v-model="editableValues[index].m_StringValue" @input="handleInputChange($event, index)" type="text"
             class=" px-1 dark:bg-slate-900 w-full" />
         </td>
       </tr>
       <tr>
-        <td class="border">
+        <td class="border dark:border-gray-400">
           <button @click="$emit('add-mainval', { byteLen: typeClass.cMaxLengthBytes })"
             class=" dark:text-white px-2 py-1 rounded w-full">Add Row</button>
         </td>
