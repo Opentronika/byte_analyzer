@@ -6,17 +6,19 @@
   <div id="app" class=" flex dark:bg-gray-900 bg-white p-2 justify-center flex-wrap [&>*]:max-w-[500px]">
     <ValueElement :value="mainvals" :typeClass="HexadecimalType" @update:value="handleUpdate"
       @add-mainval="addMainVal" />
-    <ValueElement :value="mainvals" :typeClass="Uint32BIType" @update:value="handleUpdate" @add-mainval="addMainVal" />
-    <ValueElement :value="mainvals" :typeClass="Int32BIType" @update:value="handleUpdate" @add-mainval="addMainVal" />
+    <ValueElement :value="mainvals" :typeClass="Uint32BE" @update:value="handleUpdate" @add-mainval="addMainVal" />
+    <ValueElement :value="mainvals" :typeClass="Int64BE" @update:value="handleUpdate" @add-mainval="addMainVal" />
+    <ValueElement :value="mainvals" :typeClass="Int32BE" @update:value="handleUpdate" @add-mainval="addMainVal" />
+    <ValueElement :value="mainvals" :typeClass="Int16BE" @update:value="handleUpdate" @add-mainval="addMainVal" />
+    <ValueElement :value="mainvals" :typeClass="Int8BE" @update:value="handleUpdate" @add-mainval="addMainVal" />
   </div>
 </template>
 
 <script>
 import { ref } from 'vue';
 import HexadecimalType from '../classes_types/HexadecimalType';
-import Uint32BIType from '../classes_types/Uint32BIType';
 import BinaryType from '../classes_types/BinaryType'
-import Int32BIType from '../classes_types/Int32BIType';
+import {Int64BE,Int32BE,Int16BE,Int8BE,Uint32BE} from '../classes_types/32BEType';
 import ValueElement from './ValueElement.vue';
 export default {
   name: 'MainApp',
@@ -24,8 +26,7 @@ export default {
     ValueElement
   },
   data() {
-    // return { HexadecimalType, Uint32BIType, Int32BIType, BinaryType};
-    return { HexadecimalType, Uint32BIType, Int32BIType, BinaryType };
+    return { HexadecimalType, Uint32BE, BinaryType,Int64BE,Int32BE,Int16BE,Int8BE };
   },
   setup(props) {
     const mainvals = ref([{ value: 0n, byteLength: 4 },
