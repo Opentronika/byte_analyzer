@@ -4,7 +4,7 @@ export default class BinaryType {
     m_StringValue;
     m_StringRaw;
     static cNAME = "Binary"
-    static cMaxLengthBytes = 8;
+    static cMaxLengthBytes = 16;
 
     constructor(value) {
         this.m_Value = value;
