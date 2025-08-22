@@ -2,12 +2,12 @@
 import logo from "../opentronika_tools/assets/opentronika.png";
 
 const seoconfig = {
-    title:'LCD Editor Pro',
-    description:'The most advanced lcd module editor that exist in the web. Code generator for lcd modules used in electronic projects that supports multiple characters, different screen sizes, and all characters stored by default in the most commonly used modules.',
-    url: 'https://opentronika.org/byte_analyzer/',
-    keywords: 'LCD editor, LCD generator code, arduino, esp32, tool, online, LCD screen generator',
-    logo: logo,
-    author: 'Lut Garu'
+  title: 'Byte Analyzer',
+  description: 'Byte Analyzer is a tool to visualize and edit byte values, showing their representation in hexadecimal, binary, and various data types (e.g., uint8, uint16, int8, int16, int32, int64, etc). Easily convert and inspect how a value is interpreted in different formats.',
+  url: 'https://opentronika.org/byte_analyzer/',
+  keywords: 'byte analyzer, hex editor, binary viewer, uint8, uint16, int8, int16, int32, int64, signed, unsigned, online tool, code generator',
+  logo: logo,
+  author: 'Lut Garu'
 }
 
 const websiteSchema = `
@@ -18,10 +18,10 @@ const websiteSchema = `
         "description": "${seoconfig.description}",
         "url": "${seoconfig.url}",
         "applicationCategory": "UtilitiesApplication",
-        "abstract":"The most advanced lcd module editor that exist in the web",
-        "author":"${seoconfig.author}",
-        "operatingSystem":"all",
-        "image":"https://raw.githubusercontent.com/lutgaru/byte_analyzer/master/Screenshot.png",
+        "abstract": "Byte Analyzer is a tool to visualize and edit byte values, showing their representation in hexadecimal, binary, and various data types.",
+        "author": "${seoconfig.author}",
+        "operatingSystem": "all",
+        "image": "https://raw.githubusercontent.com/lutgaru/byte_analyzer/master/Screenshot.png",
         "offers": {
           "@type": "Offer",
           "price": "0",
@@ -31,7 +31,13 @@ const websiteSchema = `
           "@type": "AggregateRating",
           "ratingValue": "5",
           "ratingCount": "8864"
-        }
+        },
+        "featureList": [
+          "View and edit byte values",
+          "See values in hexadecimal and binary",
+          "Instantly convert between signed and unsigned types (int8, uint8, int16, uint16, int32, uint32, int64, uint64)",
+          "Responsive UI built with Vue.js, Astro, and Tailwind CSS"
+        ]
     }
 `
 ---
