@@ -1,4 +1,4 @@
-export default class DecimalType {
+export default class BinaryType {
 
     m_Value;
     m_StringValue;
@@ -26,6 +26,11 @@ export default class DecimalType {
 
     toRawString() {
         return `${this.m_Value.toString(16).padStart(1, '0').toUpperCase()}`;
+    }
+
+    static fromString(binString) {
+        const value = BigInt(`0b${binString}`); // Convierte a BigInt
+        return new BinaryType(value); // Crea una nueva instancia
     }
 
     toInt() {
