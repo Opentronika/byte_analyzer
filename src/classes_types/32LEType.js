@@ -1,4 +1,3 @@
-import { toNByteInteger, hexStringToNumber, numberToHexString } from './Utils'
 import BigEndianIntType from './32BEType'
 
 // Clase base para little endian
