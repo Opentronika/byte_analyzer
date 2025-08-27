@@ -19,7 +19,6 @@ export default class BigEndianIntType {
         const bits = BigInt(this.byteLength * 8);
         const max = 1n << bits;
         bigIntValue = bigIntValue % max;
-        console.log(bigIntValue);
 
         // Handle signed interpretation if needed
         if (this.constructor.m_Signed) {
@@ -56,8 +55,6 @@ export default class BigEndianIntType {
         const hexString = value < 0n ?
             ((max + value) % max).toString(16).toUpperCase() :
             value.toString(16).toUpperCase();
-
-        console.log("fromString", filteredString, hexString, bytelength ?? this.cMaxLengthBytes);
 
         return new this(hexString, bytelength ?? this.cMaxLengthBytes);
     }

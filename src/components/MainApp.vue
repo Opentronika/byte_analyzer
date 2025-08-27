@@ -14,14 +14,14 @@
     <ValueElement :value="mainvals" :typeClass="Uint16BE" @update:value="handleUpdate" @add-mainval="addMainVal" />
     <ValueElement :value="mainvals" :typeClass="Int8BE" @update:value="handleUpdate" @add-mainval="addMainVal" />
     <ValueElement :value="mainvals" :typeClass="Uint8BE" @update:value="handleUpdate" @add-mainval="addMainVal" />
-    <!-- <ValueElement :value="mainvals" :typeClass="Int64LE" @update:value="handleUpdate" @add-mainval="addMainVal" />
+    <ValueElement :value="mainvals" :typeClass="Int64LE" @update:value="handleUpdate" @add-mainval="addMainVal" />
     <ValueElement :value="mainvals" :typeClass="Uint64LE" @update:value="handleUpdate" @add-mainval="addMainVal" />
     <ValueElement :value="mainvals" :typeClass="Int32LE" @update:value="handleUpdate" @add-mainval="addMainVal" />
     <ValueElement :value="mainvals" :typeClass="Uint32LE" @update:value="handleUpdate" @add-mainval="addMainVal" />
     <ValueElement :value="mainvals" :typeClass="Int16LE" @update:value="handleUpdate" @add-mainval="addMainVal" />
     <ValueElement :value="mainvals" :typeClass="Uint16LE" @update:value="handleUpdate" @add-mainval="addMainVal" />
     <ValueElement :value="mainvals" :typeClass="Int8LE" @update:value="handleUpdate" @add-mainval="addMainVal" />
-    <ValueElement :value="mainvals" :typeClass="Uint8LE" @update:value="handleUpdate" @add-mainval="addMainVal" /> -->
+    <ValueElement :value="mainvals" :typeClass="Uint8LE" @update:value="handleUpdate" @add-mainval="addMainVal" />
   </div>
 </template>
 
