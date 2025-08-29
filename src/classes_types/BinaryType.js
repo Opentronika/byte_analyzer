@@ -4,10 +4,10 @@ export default class BinaryType {
     m_StringValue;
     m_StringRaw;
     static cNAME = "Binary"
-    static cMaxLengthBytes = 8;
+    static cMaxLengthBytes = 16;
 
     constructor(value) {
-        this.m_Value = value;
+        this.m_Value = BigInt('0x' + value);
         this.m_StringValue = this.toString();
         this.m_StringRaw = this.toRawString();
     }
@@ -29,8 +29,12 @@ export default class BinaryType {
     }
 
     static fromString(binString) {
-        const value = BigInt(`0b${binString}`); // Convierte a BigInt
-        return new BinaryType(value); // Crea una nueva instancia
+        let value = 0n;
+        if (binString != "") {
+            value = BigInt(`0b${binString}`); // Convierte a BigInt
+        }
+        let hexvalue = value.toString(16).padStart(1, '0').toUpperCase()
+        return new BinaryType(hexvalue); // Crea una nueva instancia
     }
 
     toInt() {

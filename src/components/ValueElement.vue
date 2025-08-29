@@ -38,7 +38,7 @@ export default {
       required: true,
       validator: function (value) {
         return value.every(item =>
-          typeof item.value === 'bigint' && // Verifica que `value` sea un BigInt
+          typeof item.value === 'string' && // Verifica que `value` sea un BigInt
           typeof item.byteLength === 'number' && // Verifica que `byteLength` sea un número
           item.byteLength > 0 // Asegura que `byteLength` sea mayor que 0
         );
