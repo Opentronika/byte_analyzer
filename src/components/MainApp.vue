@@ -56,7 +56,7 @@ export default {
     };
 
     const addMainVal = (bytelen) => {
-      mainvals.value.push({ value: 0n, byteLength: bytelen.byteLen });
+      mainvals.value.push({ value: '0', byteLength: bytelen.byteLen });
     };
     return { mainvals, handleUpdate, addMainVal }
   }
