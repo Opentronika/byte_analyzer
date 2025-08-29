@@ -34,6 +34,9 @@ export default class BigEndianIntType {
     }
 
     static filter(strval) {
+        if (strval === "" || strval === "-") {
+            return '0';
+        }
         let strtemp = strval.replace(/[^0-9-]/g, '');
         let minus = strval.search('-');
         strtemp = strtemp.replace(/[^0-9]/g, '');
