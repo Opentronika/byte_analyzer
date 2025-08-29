@@ -1,6 +1,6 @@
 <template>
   <div class="w-full max-w-[1500px] p-2 mx-auto">
-    <!-- <ValueElement :value="mainvals" :typeClass="BinaryType" @update:value="handleUpdate" @add-mainval="addMainVal" /> -->
+    <ValueElement :value="mainvals" :typeClass="BinaryType" @update:value="handleUpdate" @add-mainval="addMainVal" />
   </div>
 
   <div id="app" class=" flex dark:bg-gray-900 bg-white p-2 justify-center flex-wrap [&>*]:max-w-[500px]">
@@ -29,8 +29,8 @@
 import { ref } from 'vue';
 import HexadecimalType from '../classes_types/HexadecimalType';
 import BinaryType from '../classes_types/BinaryType'
-import {Int64BE,Int32BE,Int16BE,Int8BE,Uint64BE,Uint32BE,Uint16BE,Uint8BE,} from '../classes_types/32BEType';
-import {Int64LE,Int32LE,Int16LE,Int8LE,Uint64LE,Uint32LE,Uint16LE,Uint8LE,} from '../classes_types/32LEType';
+import { Int64BE, Int32BE, Int16BE, Int8BE, Uint64BE, Uint32BE, Uint16BE, Uint8BE, } from '../classes_types/32BEType';
+import { Int64LE, Int32LE, Int16LE, Int8LE, Uint64LE, Uint32LE, Uint16LE, Uint8LE, } from '../classes_types/32LEType';
 import ValueElement from './ValueElement.vue';
 export default {
   name: 'MainApp',
@@ -38,9 +38,11 @@ export default {
     ValueElement
   },
   data() {
-    return { HexadecimalType, Uint32BE, BinaryType,Int64BE,Int32BE,Int16BE,Int8BE,
+    return {
+      HexadecimalType, Uint32BE, BinaryType, Int64BE, Int32BE, Int16BE, Int8BE,
       Uint64BE, Uint16BE, Uint8BE, Int64LE, Int32LE, Int16LE, Int8LE,
-      Uint64LE, Uint32LE, Uint16LE, Uint8LE };
+      Uint64LE, Uint32LE, Uint16LE, Uint8LE
+    };
   },
   setup(props) {
     const mainvals = ref([{ value: '0', byteLength: 4 },
@@ -50,7 +52,7 @@ export default {
     const handleUpdate = (newValue) => {
       // console.log("handleUpdate", newValue);
       mainvals.value[newValue.updatedIndex] = { value: newValue.updatedValue.toRawString(), byteLength: newValue.updatedValue.constructor.cMaxLengthBytes };
-      console.log("mainvals",mainvals.value);      
+      console.log("mainvals", mainvals.value);
     };
 
     const addMainVal = (bytelen) => {
