@@ -7,6 +7,9 @@ export default class BinaryType {
     static cMaxLengthBytes = 16;
 
     constructor(value) {
+        if (value == "") {
+            value = "0"
+        }
         this.m_Value = BigInt('0x' + value);
         this.m_StringValue = this.toString();
         this.m_StringRaw = this.toRawString();
