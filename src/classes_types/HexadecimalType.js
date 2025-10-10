@@ -7,8 +7,7 @@ export default class HexadecimalType {
     static cMaxLengthBytes = 8;
 
     constructor(value, bytLength = 4) {
-        this.m_Value = 0//BigInt(value);
-        console.log(this.m_Value, bytLength);
+        this.m_Value = 0;
         this.m_StringValue = value;
     }
 

@@ -50,9 +50,7 @@ export default {
     { value: '0', byteLength: 16 }]);
 
     const handleUpdate = (newValue) => {
-      // console.log("handleUpdate", newValue);
       mainvals.value[newValue.updatedIndex] = { value: newValue.updatedValue.toRawString(), byteLength: newValue.updatedValue.constructor.cMaxLengthBytes };
-      console.log("mainvals", mainvals.value);
     };
 
     const addMainVal = (bytelen) => {

@@ -47,12 +47,24 @@ class LittleEndianIntType extends BigEndianIntType {
     }
 
     static fromString(str, bytelength = null) {
-        const filteredString = this.filter(str);
-        const value = BigInt(filteredString);
-
         // Calculate bit width and max value
         const bits = BigInt((bytelength ?? this.cMaxLengthBytes) * 8);
         const max = 1n << bits;
+        const maxValue = this.m_Signed ? (max >> 1n) - 1n : max - 1n;
+        const min = this.m_Signed ? -(max >> 1n) : 0n;
+       
+        let filteredString = this.filter(str);
+
+        let value = BigInt(filteredString);
+        while (value > maxValue) {
+            filteredString = filteredString.substring(1);
+            value = BigInt(filteredString);
+        }
+
+        while (value < min) {
+            filteredString = '-'+filteredString.substring(2);
+            value = BigInt(filteredString);
+        }
 
         // Convert to hex, handling negative numbers with two's complement
         let hexString = value < 0n ?
