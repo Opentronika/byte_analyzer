@@ -3,7 +3,7 @@
     <ValueElement :value="mainvals" :typeClass="BinaryType" @update:value="handleUpdate" @add-mainval="addMainVal" />
   </div>
 
-  <div id="app" class=" flex dark:bg-gray-900 bg-white p-2 justify-center flex-wrap [&>*]:max-w-[500px]">
+  <div id="app" class=" flex dark:bg-zinc-900 bg-white p-2 justify-center flex-wrap [&>*]:max-w-[500px]">
     <ValueElement :value="mainvals" :typeClass="HexadecimalType" @update:value="handleUpdate"
       @add-mainval="addMainVal" />
     <ValueElement :value="mainvals" :typeClass="Int64BE" @update:value="handleUpdate" @add-mainval="addMainVal" />
