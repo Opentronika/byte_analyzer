@@ -8,13 +8,13 @@
     <tbody>
       <tr class="p-2 border border-gray-300 rounded dark:text-zinc-300"
         v-for="(hexNormalizedSize, index) in editableValues" :key="index">
-        <td class="border dark:border-gray-500">
+        <td class="border border-gray-300 dark:border-gray-500">
           <input v-model="editableValues[index].m_StringValue" @input="handleInputChange($event, index)" type="text"
             class=" px-1 dark:bg-zinc-900 w-full" />
         </td>
       </tr>
       <tr>
-        <td class="border dark:border-gray-500">
+        <td class="border border-gray-300 dark:border-gray-500">
           <button @click="$emit('add-mainval', { byteLen: typeClass.cMaxLengthBytes })"
             class=" dark:text-zinc-300 px-2 py-1 rounded w-full">Add Row</button>
         </td>
