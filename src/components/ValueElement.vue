@@ -16,7 +16,7 @@
       <tr>
         <td class="border border-gray-300 dark:border-gray-500">
           <button @click="$emit('add-mainval', { byteLen: typeClass.cMaxLengthBytes })"
-            class=" dark:text-zinc-300 px-2 py-1 rounded w-full">Add Row</button>
+            class=" dark:text-zinc-300 px-2 py-1 rounded w-full cursor-pointer">Add Row</button>
         </td>
       </tr>
     </tbody>
