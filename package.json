@@ -24,7 +24,7 @@
     "astro": "^7.4.13",
     "primeicons": "^8.0.2",
     "tailwindcss": "^4.3.5",
-    "typescript": "^5.9.3",
+    "typescript": "^7.0.2",
     "vue": "^3.5.46"
   },
   "devDependencies": {
