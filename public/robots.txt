@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://opentronika.github.io/byte_analyzer/sitemap-index.xml

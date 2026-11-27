@@ -1,5 +1,4 @@
 import { defineConfig } from 'astro/config';
-import robotsTxt from "astro-robots-txt";
 import tailwindcss from "@tailwindcss/vite";
 import vue from "@astrojs/vue";
 
@@ -7,8 +6,10 @@ import vue from "@astrojs/vue";
 export default defineConfig({
   site: 'https://opentronika.github.io',
   base: 'byte_analyzer',
-   vite: {
-        plugins: [tailwindcss()],
-      },
-  integrations: [vue(),robotsTxt()],
+  // Astro 7 defaults to JSX whitespace compression; keep the v6 HTML behavior.
+  compressHTML: true,
+  vite: {
+    plugins: [tailwindcss()],
+  },
+  integrations: [vue()],
 });

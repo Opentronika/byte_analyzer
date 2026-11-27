@@ -14,23 +14,47 @@ permissions:
   pages: write
   id-token: write
 
+# Only one deployment at a time; do not cancel an in-progress production deploy.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
 jobs:
+  audit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Set up Node
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 26
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Fail on high/critical vulnerabilities
+        run: npm audit --audit-level=high
+      - name: Run unit tests
+        run: npm test
+
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout your repository and submodules using git
-        uses: actions/checkout@v4
-        with: 
-          submodules: recursive 
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          submodules: recursive
       - name: Install, build, and upload your site output
-        uses: withastro/action@v5
-        # with:
-            # path: . # The root location of your Astro project inside the repository. (optional)
-            # node-version: 20 # The specific version of Node that should be used to build your site. Defaults to 18. (optional)
-            # package-manager: pnpm@latest # The Node package manager that should be used to install dependencies and build your site. Automatically detected based on your lockfile. (optional)
+        uses: withastro/action@a8b97df764791eb61fbf3338ef713b0e61ae05c5 # v6.1.4
+        with:
+          node-version: 26
+          # path: . # The root location of your Astro project inside the repository. (optional)
+          # package-manager: pnpm@latest # The Node package manager that should be used to install dependencies and build your site. Automatically detected based on your lockfile. (optional)
 
   deploy:
-    needs: build
+    needs: [audit, build]
     runs-on: ubuntu-latest
     environment:
       name: github-pages
@@ -38,4 +62,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
